@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect
 import requests
 import simplejson
+from bokeh.embed import components
+from bokeh.plotting import figure
 
 app = Flask(__name__)
 
