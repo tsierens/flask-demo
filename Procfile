@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn flask_connect_four.py $PORT
