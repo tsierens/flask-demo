@@ -2,32 +2,63 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Hello, World!</title>
+        <title>Stock Ticker</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/jquery-1.11.0.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.11.0.min.css" type="text/css">
+        <script  type = "text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.11.0.min.js"></script>
+  				{{ script|safe }}
     </head>
     <body>
 		<div class=page>
   			<h1>User Input</h1>
   			<div class=metanav>
 
-    			<h4>Please enter a stock ticker eg. GOOG, and check desired features.</h4>
+    			<h4>Please enter a stock ticker(s) eg. GOOG, and check desired features.</h4>
 
-    			<form id='input' method='post' action='index'>	
+    			<form id='input' method='POST' action='/index'>	
 	  			<p>
 					Ticker symbol: <input type='text' name='ticker' />
 	  			</p>
 	  			<p>
-					<input type="checkbox" name='features' value='Close'>Closing price<br>
-					<input type="checkbox" name='features' value='Adj. Close'>Adjusted closing price<br>
-					<input type="checkbox" name='features' value='Open'>Opening price<br>
-					<input type="checkbox" name='features' value='Adj. Open'>Adjusted opening price<br>
+					<input type="checkbox" name='Close' value='True'>Closing price<br>
+					<input type="checkbox" name='Adj. Close' value='True'>Adjusted closing price<br>
+					<input type="checkbox" name='Open' value='True'>Opening price<br>
+					<input type="checkbox" name='Adj. Open' value='True'>Adjusted opening price<br>
 	    			<input type="submit" value="Submit">
 	  			</p>
 				</form>
 
   			</div>
+            <div>
+    			<form id ='index' method = 'get' action ='reset'>
+    			
+    				<input type = 'submit' value = 'Reset'/>	
+    			</form>
+            </div>
+            <div>
+                <script type = "text/javascript">
+                    var failed = {{failed | safe}}
+                    document.write(failed)
+                </script>   
+            </div>
+            <div class='bokeh' align='center'>
+                <script type="text/javascript">
+   					
+					var div = {{div | safe}};
+					var i;
+					
+					for (i = 0; i < div.length; i++) {
+				
+					    document.write(div[i]);
+					}
+					
+					//document.write(divs[0]);
+				</script>
+
+            </div>
 		</div>
 	</body>
 </html>
