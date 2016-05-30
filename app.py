@@ -45,6 +45,8 @@ def make_plots(data):
         for i, name in enumerate(plot_data.columns):
             fig.line(plot_data.index, plot_data[name], color = colours[i],legend = name, line_width = 2, line_alpha = 0.85)
         
+        fig.legend.location = "top_left"
+        
         fig.xgrid.grid_line_width = 2
         fig.ygrid.grid_line_width = 2
         fig.xgrid.grid_line_color = 'white'
