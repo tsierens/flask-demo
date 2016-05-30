@@ -16,7 +16,7 @@ app.script = ''
 
 url = "https://www.quandl.com/api/v3/datasets/WIKI/"
 ftype = ".csv"
-apikey = os.environ["apikey"]
+#apikey = os.environ["apikey"]
 apikey = {'api_key':'Xs8jwnLUvyXSEUzXVYz5'}
 
 def split_string(tickers):
